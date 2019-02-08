@@ -2,16 +2,63 @@ package com.ssau;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Student
+public class Schoolboy implements Pupil
 {
+    private class Register implements Serializable,Cloneable
+    {
+        private String name;
+        private int mark;
+
+        public Register()
+        {
+            name="";
+            mark=0;
+        }
+
+        public Register(String name, int k) {
+            this.name=name;
+            mark=k;
+        }
+
+        @Override
+        public int hashCode()
+        {
+            int result=mark;
+            result = 31 * result + (name != null ? name.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final Register other = (Register) obj;
+            if (!Objects.equals(this.name, other.name)) {
+                return false;
+            }
+            return this.mark == other.mark;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException
+        {
+            return (Register)super.clone();
+        }
+    }
+
     private String name;
     private int[] marks;
     private String[] subjects;
 
-    public Student(String n,int k)
+    public Schoolboy(String n, int k)
     {
         name=n;
         marks=new int[k];
@@ -137,19 +184,19 @@ public class Student
     }
 
     @Override
-    public Student clone()
+    public Schoolboy clone()
     {
-        Student clone;
+        Schoolboy clone;
         try
         {
-            clone = (Student)super.clone();
+            clone = (Schoolboy)super.clone();
             clone.marks=this.marks.clone();
             clone.subjects=this.subjects.clone();
             return clone;
         }
         catch (CloneNotSupportedException ex)
         {
-            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Schoolboy.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
