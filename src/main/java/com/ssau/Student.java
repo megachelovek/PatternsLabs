@@ -190,8 +190,8 @@ public class Student implements Pupil
         try
         {
             clone = (Student)super.clone();
-            clone.marks=this.marks.clone();
-            clone.subjects=this.subjects.clone();
+            System.arraycopy(this.marks ,0 ,clone.marks ,0 ,this.marks.length);
+            System.arraycopy(this.subjects ,0 ,clone.subjects ,0 ,this.subjects.length);
             return clone;
         }
         catch (CloneNotSupportedException ex)
@@ -200,4 +200,30 @@ public class Student implements Pupil
             return null;
         }
     }
+    /*
+    public static int[] deepCopyIntArray(int[] original) {
+        if (original == null) {
+            return null;
+        }
+
+        final int[] result = new int[original.length];
+        for (int i = 0; i < original.length; i++) {
+            result[i] = original[i].clone;
+        }
+        return result;
+    }
+    public static String[] deepCopyStringArray(boolean[][] original) {
+        if (original == null) {
+            return null;
+        }
+
+        final boolean[][] result = new boolean[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            result[i] = Arrays.copyOf(original[i], original[i].length);
+            // For Java versions prior to Java 6 use the next:
+            // System.arraycopy(original[i], 0, result[i], 0, original[i].length);
+        }
+        return result;
+    }
+    */
 }

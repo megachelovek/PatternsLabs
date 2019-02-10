@@ -30,6 +30,11 @@ public class Pupils {
         return _factory.createInstance(name,size);
     }
 
+    public static Pupil synchronizedPupil(Pupil p){
+        SynchronizeStudent student = new SynchronizeStudent(p.getName(),p.getLength());
+        return student;
+    }
+
     public static boolean equals(Pupil a, Pupil b)
     {
         if (!(a.getName().equals(b.getName()))) return false;
