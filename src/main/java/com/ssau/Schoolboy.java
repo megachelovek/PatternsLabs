@@ -123,6 +123,11 @@ public class Schoolboy implements Pupil
         return "";
     }
 
+    public String[] getSubjects()
+    {
+        return this.subjects;
+    }
+
 
     public void addSubjectAndMark(String subj,int m)
     {

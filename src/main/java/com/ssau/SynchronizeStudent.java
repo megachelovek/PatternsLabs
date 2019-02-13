@@ -153,4 +153,11 @@ public class SynchronizeStudent implements Pupil{
     }
   }
 
+  @Override
+  public String[] getSubjects()
+  {
+    return this.subjects;
+  }
+
+
 }
