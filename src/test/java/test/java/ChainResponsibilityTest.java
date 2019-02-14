@@ -46,7 +46,6 @@ public class ChainResponsibilityTest {
       char[] buf = new char[256];
       int c;
       while((c = reader.read(buf))>0){
-
         if(c < 256){
           buf = Arrays.copyOf(buf, c);
         }
@@ -54,7 +53,6 @@ public class ChainResponsibilityTest {
       }
     }
     catch(IOException ex){
-
       System.out.println(ex.getMessage());
     }
   }

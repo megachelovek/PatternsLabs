@@ -205,6 +205,8 @@ public class Student implements Pupil
             return null;
         }
     }
+
+    public void print(){}
     /*
     public static int[] deepCopyIntArray(int[] original) {
         if (original == null) {
