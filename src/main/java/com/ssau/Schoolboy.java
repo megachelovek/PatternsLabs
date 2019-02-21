@@ -1,6 +1,7 @@
 package com.ssau;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -23,7 +24,12 @@ public class Schoolboy implements Pupil
             this.name=name;
             mark=k;
         }
-
+        public void SetMarkRegister(int mark) {
+            this.mark=mark;
+        }
+        public void SetSubjectRegister(String name) {
+        this.name=name;
+    }
         @Override
         public int hashCode()
         {
@@ -55,19 +61,12 @@ public class Schoolboy implements Pupil
     }
 
     private String name;
-    private int[] marks;
-    private String[] subjects;
+    private Register registers[];
 
-    public Schoolboy(String n, int k)
+    public Schoolboy(String n, Register[] reg)
     {
         name=n;
-        marks=new int[k];
-        subjects=new String[k];
-        for (int i=0;i<k;i++)
-        {
-            marks[i]=0;
-            subjects[i]="";
-        }
+        registers = reg;
     }
 
 
@@ -85,72 +84,47 @@ public class Schoolboy implements Pupil
 
     public void setMark(int n, int mark)
     {
-        if (mark>1&&mark<6)
-        {
-            marks[n]=mark;
-        }
+       registers[n].SetMarkRegister(mark);
     }
 
 
     public int getMark(int n)
     {
-        return marks[n];
+        return  registers[n].mark;
     }
 
 
     public void setSubject(int n, String subj)
     {
-        for (String subject : subjects)
-        {
-            if (subject.equals(subj))
-            {
-
-            }
-        }
-        if (n>=0&&n<subjects.length)
-        {
-            subjects[n]=subj;
-        }
+        registers[n].SetSubjectRegister(subj);
     }
 
 
     public String getSubject(int n)
     {
-        if (n>=0&&n<subjects.length)
-        {
-            return subjects[n];
-        }
-        return "";
+            return registers[n].name;
     }
 
-    public String[] getSubjects()
+    public Register[] getRegisters()
     {
-        return this.subjects;
+        return this.registers;
     }
 
 
     public void addSubjectAndMark(String subj,int m)
     {
-        if (m>1&&m<6)
+        Register[] newRegisters = new Register[registers.length +1];
+        for (int i=0; i< registers.length; i++ )
         {
-            for (String subject : subjects)
-            {
-                if (subject.equals(subj))
-                {
-
-                }
-            }
-            marks = Arrays.copyOf(marks, marks.length+1);
-            subjects = Arrays.copyOf(subjects, subjects.length+1);
-            marks[marks.length-1]=m;
-            subjects[subjects.length-1]=subj;
+            newRegisters[i] = registers[i];
         }
+        newRegisters[registers.length +1] = new Register(subj,m);
     }
 
 
     public int getLength()
     {
-        return marks.length;
+        return registers.length;
     }
 
 
@@ -204,5 +178,14 @@ public class Schoolboy implements Pupil
             Logger.getLogger(Schoolboy.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+
+    @Override
+    public String[] getSubjects() {
+        String[] subjects = new String[registers.length];
+        for (int i =0; i< registers.length; i++){
+            subjects[i] = registers[i].name;
+        }
+        return subjects;
     }
 }

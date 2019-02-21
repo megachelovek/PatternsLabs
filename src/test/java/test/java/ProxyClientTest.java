@@ -11,7 +11,8 @@ public class ProxyClientTest {
 
   @Test
   public void TestProxyClient() throws IOException, DecoderException, ClassNotFoundException {
-    double result = ProxyMultiplyClientClass.ConnectToServer(3333333,7777777);
+    ProxyMultiplyClientClass clientClass = new ProxyMultiplyClientClass("127.0.0.1");
+    double result = clientClass.ConnectToServer(3333333,7777777);
     System.out.println("Result = " + result);
 
   }

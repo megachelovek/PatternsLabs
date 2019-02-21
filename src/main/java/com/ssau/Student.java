@@ -8,51 +8,6 @@ import java.util.logging.Logger;
 
 public class Student implements Pupil
 {
-    private class Register implements Serializable,Cloneable
-    {
-        private String name;
-        private int mark;
-
-        public Register()
-        {
-            name="";
-            mark=0;
-        }
-
-        public Register(String name, int k) {
-            this.name=name;
-            mark=k;
-        }
-
-        @Override
-        public int hashCode()
-        {
-            int result=mark;
-            result = 31 * result + (name != null ? name.hashCode() : 0);
-            return result;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final Register other = (Register) obj;
-            if (!Objects.equals(this.name, other.name)) {
-                return false;
-            }
-            return this.mark == other.mark;
-        }
-
-        @Override
-        public Object clone() throws CloneNotSupportedException
-        {
-            return (Register)super.clone();
-        }
-    }
 
     private String name;
     private int[] marks;
@@ -195,8 +150,8 @@ public class Student implements Pupil
         try
         {
             clone = (Student)super.clone();
-            System.arraycopy(this.marks ,0 ,clone.marks ,0 ,this.marks.length);
-            System.arraycopy(this.subjects ,0 ,clone.subjects ,0 ,this.subjects.length);
+            clone.marks=this.marks.clone();
+            clone.subjects=this.subjects.clone();
             return clone;
         }
         catch (CloneNotSupportedException ex)

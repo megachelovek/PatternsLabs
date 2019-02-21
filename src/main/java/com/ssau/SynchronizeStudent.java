@@ -5,7 +5,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SynchronizeStudent implements Pupil{
-
+  // TODO
+  //Объявить Pupil вызвать у него все методы через синхронайзд
   private String name;
   private int[] marks;
   private String[] subjects;

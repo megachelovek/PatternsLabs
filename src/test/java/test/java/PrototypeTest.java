@@ -4,7 +4,7 @@ import com.ssau.Student;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class CloneTest {
+class PrototypeTest {
 
     @Test
     void TestClone(){
@@ -12,17 +12,18 @@ class CloneTest {
         original.addSubjectAndMark("1TestSubj1",3);
         original.addSubjectAndMark("2TestSubj2",5);
         Student cloned = original.clone();
-
         System.out.println(original.toString());
+        System.out.println("======");
         System.out.println(cloned.toString());
         System.out.println(original.getMark(1) +" | "+ cloned.getMark(1));
-        // deep check
-        Assertions.assertEquals(original.getMark(2), cloned.getMark(2));
-        Assertions.assertEquals(original.getSubject(1), cloned.getSubject(1));
-        Assertions.assertNotSame(original.getMark(1), cloned.getMark(1));
-        Assertions.assertNotSame(original.getSubject(2), cloned.getSubject(2));
 
-        // shallow check
-        Assertions.assertSame(original.getLength(), cloned.getLength());
+        System.out.println("=======================================");
+        original.setSubject(1,"NONONO");
+        original.setSubject(2,"NONONO");
+
+        System.out.println(original.toString() );
+        System.out.println("======");
+        System.out.println(cloned.toString());
+        System.out.println(original.getMark(1) +" | "+ cloned.getMark(1));
     }
 }

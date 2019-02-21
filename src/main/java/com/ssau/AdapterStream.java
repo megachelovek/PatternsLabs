@@ -5,7 +5,6 @@ import org.apache.commons.codec.binary.Hex;
 
 import java.io.*;
 import java.util.Arrays;
-import javax.xml.bind.DatatypeConverter;
 
 public class AdapterStream {
   public static OutputStream GetStreamFromStringArray(String[] arrayString) throws IOException {

@@ -7,16 +7,16 @@ import java.net.Socket;
 import java.nio.ByteBuffer;
 
 public class ProxyMultiplyClientClass {
-  private static Socket clientSocket;
-  private static final int  SOCKET = 5000;
-  private static final String HOST_NAME= "localhost";
+  private int  SOCKET = 5000;
+  private String HOST_NAME;
   private double[] args;
 
-  public ProxyMultiplyClientClass(){
+  public ProxyMultiplyClientClass(String host){
+    this.HOST_NAME = host;
   }
 
-  public static double ConnectToServer(double firstArg,double secondArg) throws IOException {
-    clientSocket = new Socket(HOST_NAME,SOCKET);
+  public  double ConnectToServer(double firstArg,double secondArg) throws IOException {
+    Socket clientSocket = new Socket(HOST_NAME,SOCKET);
     double[] arrDouble = new double[]{firstArg,secondArg};
     byte[] bytes = new byte[arrDouble.length * 8];
     ByteBuffer buf = ByteBuffer.wrap(bytes);
