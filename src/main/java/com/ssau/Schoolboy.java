@@ -63,10 +63,11 @@ public class Schoolboy implements Pupil
     private String name;
     private Register registers[];
 
-    public Schoolboy(String n, Register[] reg)
+    public Schoolboy(String n, int reg)
     {
         name=n;
-        registers = reg;
+        this.registers = new Register[reg];
+
     }
 
 
@@ -157,8 +158,7 @@ public class Schoolboy implements Pupil
     public int hashCode()
     {
         int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (marks != null ? Arrays.hashCode(marks) : 0);
-        result = 31 * result + (subjects != null ? Arrays.hashCode(subjects) : 0);
+        result = 31 * result + (registers != null ? Arrays.hashCode(registers) : 0);
         return result;
     }
 
@@ -169,8 +169,7 @@ public class Schoolboy implements Pupil
         try
         {
             clone = (Schoolboy)super.clone();
-            clone.marks=this.marks.clone();
-            clone.subjects=this.subjects.clone();
+            clone.registers=this.registers.clone();
             return clone;
         }
         catch (CloneNotSupportedException ex)
