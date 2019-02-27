@@ -1,13 +1,53 @@
 package com.ssau;
 
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Student implements Pupil
+public class Student implements Pupil, Serializable
 {
 
+    public static class MementoStudent{
+        private byte[] serializationStudent;
+
+        public void SetStudent(Student student) throws IOException {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutput out = null;
+            try {
+                out = new ObjectOutputStream(bos);
+                out.writeObject(student);
+                out.flush(); //TODO тут ошибка
+                serializationStudent = bos.toByteArray();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                    bos.close();
+                }
+            }
+
+        public Student GetStudent() throws IOException {
+            Student obj=null;
+            ByteArrayInputStream bis = new ByteArrayInputStream(serializationStudent);
+            ObjectInput in = null;
+            try {
+                in = new ObjectInputStream(bis);
+                obj =(Student) in.readObject() ;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                if (in != null) {
+                    in.close();
+                }
+            }
+            return obj;
+        }
+
+    }
+
+    /// Student
     private String name;
     private int[] marks;
     private String[] subjects;
@@ -168,5 +208,16 @@ public class Student implements Pupil
 
     public void SetPrintCommand(Command command){
         this.command = command;
+    }
+
+    public MementoStudent createMemento() throws IOException {
+        MementoStudent memento = new MementoStudent();
+        memento.SetStudent(this);
+        return memento;
+    }
+
+    public  Student GetStudentMemento(MementoStudent memento) throws IOException {
+        Student student = memento.GetStudent();
+        return student;
     }
 }
