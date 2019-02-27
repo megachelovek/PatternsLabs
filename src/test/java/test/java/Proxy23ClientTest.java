@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class ProxyClientTest {
+public class Proxy23ClientTest {
 
   @Test
   public void TestProxyClient() throws IOException, DecoderException, ClassNotFoundException {

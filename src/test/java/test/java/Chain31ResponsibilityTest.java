@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class ChainResponsibilityTest {
+public class Chain31ResponsibilityTest {
 
   @Test
   public void TestChain() throws IOException, DecoderException, ClassNotFoundException {

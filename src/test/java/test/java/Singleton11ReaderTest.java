@@ -3,7 +3,7 @@ package test.java;
 import com.ssau.SingletonReader;
 import org.junit.jupiter.api.Test;
 
-public class SingletonReaderTest {
+public class Singleton11ReaderTest {
 
   @Test
   public void ReaderTest(){

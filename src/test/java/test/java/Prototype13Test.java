@@ -1,14 +1,13 @@
 package test.java;
 
 import com.ssau.Student;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class PrototypeTest {
+class Prototype13Test {
 
     @Test
     void TestClone(){
-        Student original = new Student("TestCloneStudentName",2);
+        Student original = new Student("TestCloneStudentName",0);
         original.addSubjectAndMark("1TestSubj1",3);
         original.addSubjectAndMark("2TestSubj2",5);
         Student cloned = original.clone();
@@ -27,7 +26,7 @@ class PrototypeTest {
         System.out.println(original.getMark(1) +" | "+ cloned.getMark(1));
         System.out.println("########################################");
 
-        Student originalSchoolboy = new Student("TestCloneSchoolboyName",2);
+        Student originalSchoolboy = new Student("TestCloneSchoolboyName",0);
         originalSchoolboy.addSubjectAndMark("1TestSubj1",3);
         originalSchoolboy.addSubjectAndMark("2TestSubj2",5);
         Student clonedSchoolboy = originalSchoolboy.clone();

@@ -5,15 +5,15 @@ import com.ssau.Pupils;
 import com.ssau.SchoolboyFactory;
 import org.junit.jupiter.api.Test;
 
-class FactoryMethodTest {
+class Factory12MethodTest {
 
     @Test
     void TestClone(){
 
-        Pupil original = Pupils.createInstance("StudentFactory",5);
+        Pupil original = Pupils.createInstance("StudentFactory",0);
         System.out.println(original.getClass() + " = " +original.getName());
         Pupils.setPupilFactory(new SchoolboyFactory());
-        original = Pupils.createInstance("SchoolboyFactory",4);
+        original = Pupils.createInstance("SchoolboyFactory",0);
         System.out.println(original.getClass() + " = " +original.getName());
     }
 }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.Arrays;
 
-public class CommandTest {
+public class Command32Test {
 
   @Test
   public void CommandWriterTest() throws IOException {
@@ -15,7 +15,7 @@ public class CommandTest {
     PrintWriter clean = new PrintWriter("TextStudentCommand.txt");
     clean.print("");
     clean.close();
-    Student student = new Student("CommandTest",3);
+    Student student = new Student("CommandTest",0);
     student.addSubjectAndMark("Math",3);
     student.addSubjectAndMark("C#",2);
     student.addSubjectAndMark("Java",2);

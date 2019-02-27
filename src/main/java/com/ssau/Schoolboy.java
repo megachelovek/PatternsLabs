@@ -1,15 +1,15 @@
 package com.ssau;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Schoolboy implements Pupil
 {
-    private class Register implements Serializable,Cloneable
+    protected static class Register implements Serializable,Cloneable
     {
         private String name;
         private int mark;
@@ -58,15 +58,65 @@ public class Schoolboy implements Pupil
         {
             return (Register)super.clone();
         }
+
+        @Override
+        public String toString()
+        {
+            StringBuffer s = new StringBuffer();
+            s.append(this.name);
+            s.append(" | ");
+            s.append(this.mark);
+            return s.toString();
+        }
     }
 
+    protected class SchoolboyIterator implements Iterator {
+        private int current;
+        private Register[] registers;
+
+        SchoolboyIterator(Register[] reg){
+            this.registers = reg;
+            current = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (current+1<registers.length){return true;}
+            return false;
+        }
+
+        @Override
+        public Register next() {
+            if (hasNext()) {
+                current++;
+                return registers[current];
+            }
+            return registers[current];
+        }
+
+        public void onStart() {
+            current = 0;
+        }
+
+        public int getCurrentNumber() {
+           return current;
+        }
+
+        public Register getCurrent() {
+            return registers[current];
+        }
+    }
+
+    ///  \/ Schoolboy class \/
     private String name;
-    private Register registers[];
+    private Register[] registers;
+    private SchoolboyIterator iterator;
 
     public Schoolboy(String n, int reg)
     {
         name=n;
         this.registers = new Register[reg];
+        this.iterator = new SchoolboyIterator(registers);
 
     }
 
@@ -119,7 +169,9 @@ public class Schoolboy implements Pupil
         {
             newRegisters[i] = registers[i];
         }
-        newRegisters[registers.length +1] = new Register(subj,m);
+        newRegisters[newRegisters.length-1] = new Register(subj,m);
+        this.registers = newRegisters;
+        iterator.registers = newRegisters;
     }
 
 
@@ -186,5 +238,16 @@ public class Schoolboy implements Pupil
             subjects[i] = registers[i].name;
         }
         return subjects;
+    }
+
+    public SchoolboyIterator iterator(){
+        return this.iterator;
+    }
+
+    public Register getCurrent(){
+        return this.iterator.getCurrent();
+    }
+    public void nextRegister(){
+        this.iterator.next();
     }
 }

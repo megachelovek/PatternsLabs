@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.Arrays;
 
-public class AdapterTest {
+public class Adapter21Test {
 
   @Test
   public void TestAdapter() throws IOException, DecoderException, ClassNotFoundException {

@@ -8,7 +8,7 @@ public class PupilsTest {
 
     @Test
     public void TestFactoryMethod(){
-        Pupil test = Pupils.createInstance("Iosifff Kobzon",10);
+        Pupil test = Pupils.createInstance("Iosifff Kobzon",0);
         System.out.println("Class = " +test.getClass() + " | Name = " + test.getName());
     }
 
