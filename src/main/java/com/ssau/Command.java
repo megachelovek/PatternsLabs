@@ -1,5 +1,7 @@
 package com.ssau;
 
+import java.io.FileWriter;
+
 public interface Command {
-    public void setPrintCommand();
+    void PrintInFile(FileWriter fileWriter, Pupil pupil);
 }

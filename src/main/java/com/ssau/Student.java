@@ -1,8 +1,7 @@
 package com.ssau;
 
-import java.io.Serializable;
+import java.io.FileWriter;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +11,7 @@ public class Student implements Pupil
     private String name;
     private int[] marks;
     private String[] subjects;
+    private Command command;
 
     public Student(String n,int k)
     {
@@ -23,6 +23,7 @@ public class Student implements Pupil
             marks[i]=0;
             subjects[i]="";
         }
+        command = new CommandWriterColumn();
     }
 
 
@@ -161,31 +162,11 @@ public class Student implements Pupil
         }
     }
 
-    public void print(){}
-    /*
-    public static int[] deepCopyIntArray(int[] original) {
-        if (original == null) {
-            return null;
-        }
-
-        final int[] result = new int[original.length];
-        for (int i = 0; i < original.length; i++) {
-            result[i] = original[i].clone;
-        }
-        return result;
+    public void print(FileWriter in){
+        this.command.PrintInFile(in,this);
     }
-    public static String[] deepCopyStringArray(boolean[][] original) {
-        if (original == null) {
-            return null;
-        }
 
-        final boolean[][] result = new boolean[original.length][];
-        for (int i = 0; i < original.length; i++) {
-            result[i] = Arrays.copyOf(original[i], original[i].length);
-            // For Java versions prior to Java 6 use the next:
-            // System.arraycopy(original[i], 0, result[i], 0, original[i].length);
-        }
-        return result;
+    public void SetPrintCommand(Command command){
+        this.command = command;
     }
-    */
 }

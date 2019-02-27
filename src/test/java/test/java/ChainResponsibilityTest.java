@@ -24,10 +24,10 @@ public class ChainResponsibilityTest {
     chainResponsibility.OutputStudent(studentColumn);
     FileReaderTest("TextChainResponsibility.txt");
 
-    FileWriter fstream1 = new FileWriter("TextChainResponsibility.txt");// конструктор с одним параметром - для перезаписи
-    BufferedWriter out1 = new BufferedWriter(fstream1); //  создаём буферезированный поток
-    out1.write(""); // очищаем, перезаписав поверх пустую строку
-    out1.close(); // закрываем
+    FileWriter fstream1 = new FileWriter("TextChainResponsibility.txt");
+    BufferedWriter out1 = new BufferedWriter(fstream1);
+    out1.write("");
+    out1.close();
     System.out.println("=========");
     Pupil studentString = new Student("ChainStudentString", 0);
     studentString.addSubjectAndMark("StringMath",2);
