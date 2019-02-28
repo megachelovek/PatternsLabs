@@ -250,4 +250,17 @@ public class Schoolboy implements Pupil
     public void nextRegister(){
         this.iterator.next();
     }
+
+    @Override
+    public double getAverage() {
+        double average =0;
+        if (registers!=null && registers.length!=0){
+            for (Register reg : registers){
+                average+=reg.mark;
+            }
+            average = average/registers.length;
+            return average;
+        }
+        return average;
+    }
 }

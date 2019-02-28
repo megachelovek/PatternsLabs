@@ -128,6 +128,19 @@ public class Student implements Pupil, Serializable
         return this.subjects;
     }
 
+    @Override
+    public double getAverage() {
+        double average =0;
+        if (marks!=null && marks.length!=0){
+            for (int mark : marks){
+                average+=mark;
+            }
+            average = average/marks.length;
+            return average;
+        }
+        return average;
+    }
+
 
     public void addSubjectAndMark(String subj,int m)
     {
