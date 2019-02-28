@@ -2,8 +2,9 @@ package com.ssau;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 
-public class CommandWriterColumn implements Command {
+public class CommandWriterColumn implements Command, Serializable {
     @Override
     public void PrintInFile(FileWriter fileWriter, Pupil pupil){
         try(FileWriter writer = fileWriter)

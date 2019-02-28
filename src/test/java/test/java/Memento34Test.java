@@ -16,13 +16,14 @@ public class Memento34Test {
     student.addSubjectAndMark("2Memento2",4);
     student.addSubjectAndMark("3Memento3",5);
     System.out.println(student);
+    System.out.println("---");
     Student.MementoStudent  mementoStudent = student.createMemento();
     student.setSubject(0,"NONONO");
     student.setSubject(1,"NONONO");
     student.setSubject(2,"NONONO");
     System.out.println(student);
     System.out.println("=====");
-    student = mementoStudent.GetStudent();
+    student = student.GetStudentMemento(mementoStudent);
     System.out.println(student);
   }
 }

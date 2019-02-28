@@ -53,6 +53,10 @@ public class Student implements Pupil, Serializable
     private String[] subjects;
     private Command command;
 
+    public Student()
+    {
+    }
+
     public Student(String n,int k)
     {
         name=n;
@@ -143,12 +147,10 @@ public class Student implements Pupil, Serializable
         }
     }
 
-
     public int getLength()
     {
         return marks.length;
     }
-
 
     @Override
     public String toString()
