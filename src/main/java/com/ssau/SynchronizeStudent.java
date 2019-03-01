@@ -90,5 +90,10 @@ public class SynchronizeStudent implements Pupil{
     return pupil.getSubjects();
   }
 
+  @Override
+  public synchronized double getAverage() {
+    return 0;
+  }
+
 
 }
