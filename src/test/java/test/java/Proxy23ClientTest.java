@@ -12,7 +12,7 @@ public class Proxy23ClientTest {
   @Test
   public void TestProxyClient() throws IOException, DecoderException, ClassNotFoundException {
     ProxyMultiplyClientClass clientClass = new ProxyMultiplyClientClass("127.0.0.1");
-    double result = clientClass.ConnectToServer(3333333,7777777);
+    String result = clientClass.ConnectToServer(3333333,7777777);
     System.out.println("Result = " + result);
 
   }
