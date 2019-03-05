@@ -1,5 +1,7 @@
 package com.ssau;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.io.*;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -51,6 +53,8 @@ public class Student implements Pupil, Serializable
     private String name;
     private int[] marks;
     private String[] subjects;
+
+    @JsonAdapter(InterfaceAdapter.class)
     private Command command;
 
     public Student()
