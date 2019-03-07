@@ -11,7 +11,7 @@ public class Command32Test {
 
   @Test
   public void CommandWriterTest() throws IOException {
-    FileWriter writer = new FileWriter("TextStudentCommand.txt", true);
+    FileWriter writer = new FileWriter("TextStudentCommand.txt", true); // TODO предмет оценка фамилия
     PrintWriter clean = new PrintWriter("TextStudentCommand.txt");
     clean.print("");
     clean.close();

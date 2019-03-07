@@ -15,7 +15,7 @@ public class Chain31ResponsibilityTest {
 
   @Test
   public void TestChain() throws IOException, DecoderException, ClassNotFoundException {
-    Pupil studentColumn = new Student("ChainStudentColumn", 0);
+    Pupil studentColumn = new Student("ChainStudentColumn", 0); //TODO вывести фамилию и оценку
     studentColumn.addSubjectAndMark("ColumnMath",2);
     studentColumn.addSubjectAndMark("ColumnEnglish",5);
     studentColumn.addSubjectAndMark("ColumnC#",5);

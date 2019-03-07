@@ -19,7 +19,7 @@ public class Student implements Pupil, Serializable
             try {
                 out = new ObjectOutputStream(bos);
                 out.writeObject(student);
-                out.flush(); //TODO тут ошибка
+                out.flush();
                 serializationStudent = bos.toByteArray();
             } catch (IOException e) {
                 e.printStackTrace();

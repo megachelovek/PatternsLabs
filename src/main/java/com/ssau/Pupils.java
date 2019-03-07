@@ -1,21 +1,9 @@
 package com.ssau;
 
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.MatchResult;
 
 
 public class Pupils {
@@ -31,7 +19,7 @@ public class Pupils {
     }
 
     public static Pupil synchronizedPupil(Pupil p){
-        SynchronizeStudent student = new SynchronizeStudent(p.getName(),p.getLength());
+        SynchronizeStudent student = new SynchronizeStudent(p);
         return student;
     }
 

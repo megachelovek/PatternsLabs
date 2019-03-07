@@ -56,7 +56,7 @@ public class Schoolboy implements Pupil
         @Override
         public Object clone() throws CloneNotSupportedException
         {
-            return (Register)super.clone();
+            return super.clone();
         }
 
         @Override
@@ -116,6 +116,11 @@ public class Schoolboy implements Pupil
     {
         name=n;
         this.registers = new Register[reg];
+        for (int i=0;i<reg;i++)
+        {
+            this.registers[i].mark = 0;
+            this.registers[i].name = "empty";
+        }
         this.iterator = new SchoolboyIterator(registers);
 
     }
@@ -164,14 +169,9 @@ public class Schoolboy implements Pupil
 
     public void addSubjectAndMark(String subj,int m)
     {
-        Register[] newRegisters = new Register[registers.length +1];
-        for (int i=0; i< registers.length; i++ )
-        {
-            newRegisters[i] = registers[i];
-        }
-        newRegisters[newRegisters.length-1] = new Register(subj,m);
-        this.registers = newRegisters;
-        iterator.registers = newRegisters;
+        registers = Arrays.copyOf(registers, registers.length+1);
+        registers[registers.length-1] = new Register(subj, m);
+        iterator.registers = registers;
     }
 
 
@@ -221,7 +221,10 @@ public class Schoolboy implements Pupil
         try
         {
             clone = (Schoolboy)super.clone();
-            clone.registers=this.registers.clone();
+            clone.registers = this.registers.clone();
+            for (int i=0; i<registers.length; i++){
+                clone.registers[i] = (Register) this.registers[i].clone();
+            }
             return clone;
         }
         catch (CloneNotSupportedException ex)

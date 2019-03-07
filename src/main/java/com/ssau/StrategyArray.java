@@ -4,7 +4,7 @@ public class StrategyArray implements Strategy{
     @Override
     public Pupil[] SortPupilRegisters(Pupil[] pupils) {
         return null;
-    }
+    } //TODO сортировку через один метод не привязываться к регистрам \ полям студента
 
     @Override
     public Pupil[] SortPupilArray(Pupil[] pupils) {

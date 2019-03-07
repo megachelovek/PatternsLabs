@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class CommandWriterColumn implements Command, Serializable {
     @Override
-    public void PrintInFile(FileWriter fileWriter, Pupil pupil){
+    public void PrintInFile(FileWriter fileWriter, Pupil pupil){ //TODO оценки фамилия пердмет
         try(FileWriter writer = fileWriter)
         {
             String text = "";

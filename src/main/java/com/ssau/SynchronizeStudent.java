@@ -6,9 +6,9 @@ public class SynchronizeStudent implements Pupil{
 
   private Pupil pupil;
 
-  public  SynchronizeStudent (String n,int k)
+  public  SynchronizeStudent (Pupil n)
   {
-    this.pupil = new Student(n,k);
+    this.pupil = n;
   }
 
 

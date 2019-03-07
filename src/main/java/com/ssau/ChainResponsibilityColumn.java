@@ -21,12 +21,12 @@ public class ChainResponsibilityColumn implements ChainResponsibility{
             }
         }
         else{
-            this.GetNextMember(pupil);
+            this.GetNextMember(pupil); //TODO сделать поле типа ChainResponsibility, присваиваю null,
         }
     }
 
     @Override
-    public void GetNextMember(Pupil pupil) {
+    public void GetNextMember(Pupil pupil) { // типа интерфейса и тут меняю цепочку
         ChainResponsibilityString chainResponsibilityString = new ChainResponsibilityString();
         chainResponsibilityString.OutputStudent(pupil);
     }
