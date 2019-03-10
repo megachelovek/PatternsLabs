@@ -4,14 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ChainResponsibilityString implements ChainResponsibility {
+    ChainResponsibility next = null;
     @Override
     public void OutputStudent(Pupil pupil) {
         if (pupil.getLength() <=3){
             try(FileWriter writer = new FileWriter("TextChainResponsibility.txt", false))
             {
-                String text = "";
-                for (String subj: pupil.getSubjects()) {
-                    text += subj +" ";
+                String text = pupil.getName();
+                for (int i=0; i<pupil.getLength();i++) {
+                    text += " "+pupil.getSubject(i) +" "+ pupil.getMark(i);
                 }
                 writer.write(text);
                 writer.flush();
@@ -27,7 +28,7 @@ public class ChainResponsibilityString implements ChainResponsibility {
 
     @Override
     public void GetNextMember(Pupil pupil) {
-        ChainResponsibilityColumn chainResponsibilityColumn = new ChainResponsibilityColumn();
-        chainResponsibilityColumn.OutputStudent(pupil);
+        this.next  = new ChainResponsibilityColumn();
+        next.OutputStudent(pupil);
     }
 }

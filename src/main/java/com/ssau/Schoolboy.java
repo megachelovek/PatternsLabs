@@ -266,4 +266,9 @@ public class Schoolboy implements Pupil
         }
         return average;
     }
+
+    @Override
+    public String accept(Visitor visitor) {
+        return visitor.Visit(this);
+    }
 }

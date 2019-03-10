@@ -1,7 +1,6 @@
 package com.ssau;
 
 public class SynchronizeStudent implements Pupil{
-  // TODO
   //Объявить Pupil вызвать у него все методы через синхронайзд
 
   private Pupil pupil;
@@ -93,6 +92,11 @@ public class SynchronizeStudent implements Pupil{
   @Override
   public synchronized double getAverage() {
     return 0;
+  }
+
+  @Override
+  public String accept(Visitor visitor) {
+    return  visitor.Visit(new Student(pupil.getName(),pupil.getLength()));
   }
 
 

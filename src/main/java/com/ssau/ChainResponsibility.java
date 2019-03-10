@@ -2,7 +2,7 @@ package com.ssau;
 
 public interface ChainResponsibility {
 
-    public void OutputStudent(Pupil pupil);
+    void OutputStudent(Pupil pupil);
 
-    public void GetNextMember(Pupil pupil);
+    void GetNextMember(Pupil pupil);
 }

@@ -98,7 +98,11 @@ public class Student implements Pupil, Serializable
 
     public int getMark(int n)
     {
-        return marks[n];
+       if (marks[n]>marks.length) {
+           return 0;
+       }else {
+           return marks[n];
+       }
     }
 
 
@@ -124,7 +128,7 @@ public class Student implements Pupil, Serializable
         {
             return subjects[n];
         }
-        return "";
+        return null;
     }
 
     public String[] getSubjects()
@@ -145,18 +149,16 @@ public class Student implements Pupil, Serializable
         return average;
     }
 
+    @Override
+    public String accept(Visitor visitor) {
+        return visitor.Visit(this);
+    }
+
 
     public void addSubjectAndMark(String subj,int m)
     {
-        if (m>1&&m<6)
+        if (m<6)
         {
-            for (String subject : subjects)
-            {
-                if (subject.equals(subj))
-                {
-
-                }
-            }
             marks = Arrays.copyOf(marks, marks.length+1);
             subjects = Arrays.copyOf(subjects, subjects.length+1);
             marks[marks.length-1]=m;
@@ -239,4 +241,5 @@ public class Student implements Pupil, Serializable
         Student student = memento.GetStudent();
         return student;
     }
+
 }

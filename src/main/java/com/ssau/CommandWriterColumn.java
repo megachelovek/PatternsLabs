@@ -6,12 +6,12 @@ import java.io.Serializable;
 
 public class CommandWriterColumn implements Command, Serializable {
     @Override
-    public void PrintInFile(FileWriter fileWriter, Pupil pupil){ //TODO оценки фамилия пердмет
+    public void PrintInFile(FileWriter fileWriter, Pupil pupil){ // оценки фамилия пердмет
         try(FileWriter writer = fileWriter)
         {
-            String text = "";
-            for (String subj: pupil.getSubjects()) {
-                text += subj +"\n";
+            String text = pupil.getName()+"\n";
+            for (int i=0; i<pupil.getLength();i++) {
+                text += pupil.getSubject(i) +" "+ pupil.getMark(i) +"\n";
             }
             writer.write(text);
             writer.flush();

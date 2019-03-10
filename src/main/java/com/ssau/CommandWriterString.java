@@ -8,9 +8,9 @@ public class CommandWriterString implements Command {
     public void PrintInFile(FileWriter fileWriter, Pupil pupil){
         try(FileWriter writer = fileWriter)
         {
-            String text = "";
-            for (String subj: pupil.getSubjects()) {
-                text += subj +" ";
+            String text = pupil.getName();
+            for (int i=0; i<pupil.getLength();i++) {
+                text += " "+pupil.getSubject(i) +" "+ pupil.getMark(i);
             }
             writer.write(text);
             writer.flush();

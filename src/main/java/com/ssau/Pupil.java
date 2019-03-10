@@ -15,4 +15,5 @@ public interface Pupil extends Serializable,Cloneable
     Object clone();
     String[] getSubjects();
     double getAverage();
+    String accept(Visitor visitor);
 }
