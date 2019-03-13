@@ -95,8 +95,13 @@ public class SynchronizeStudent implements Pupil{
   }
 
   @Override
-  public String accept(Visitor visitor) {
+  public synchronized String accept(Visitor visitor) {
     return  visitor.Visit(new Student(pupil.getName(),pupil.getLength()));
+  }
+
+  @Override
+  public synchronized int[] getMarks() {
+    return pupil.getMarks();
   }
 
 

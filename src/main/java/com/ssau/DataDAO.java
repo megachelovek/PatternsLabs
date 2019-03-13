@@ -1,5 +1,7 @@
 package com.ssau;
 
+import java.util.List;
+
 public interface DataDAO{
-    Student[] GetStudentsFromFile(String path);
+    List<Student> GetStudentsFromFile(String path);
 }

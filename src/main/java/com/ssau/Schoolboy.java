@@ -271,4 +271,13 @@ public class Schoolboy implements Pupil
     public String accept(Visitor visitor) {
         return visitor.Visit(this);
     }
+
+    @Override
+    public int[] getMarks() {
+        int[] marks = new int[this.registers.length];
+        for(int i=0; i<this.registers.length;i++){
+            marks[i] = registers[i].mark;
+        }
+        return marks;
+    }
 }

@@ -1,15 +1,15 @@
 package com.ssau;
 
-import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.InstanceCreator;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Student implements Pupil, Serializable
+public class Student implements Pupil, Serializable, InstanceCreator<Student>
 {
-
     public static class MementoStudent{
         private byte[] serializationStudent;
 
@@ -53,8 +53,6 @@ public class Student implements Pupil, Serializable
     private String name;
     private int[] marks;
     private String[] subjects;
-
-    @JsonAdapter(InterfaceAdapter.class)
     private Command command;
 
     public Student()
@@ -154,6 +152,11 @@ public class Student implements Pupil, Serializable
         return visitor.Visit(this);
     }
 
+    @Override
+    public int[] getMarks() {
+        return this.marks;
+    }
+
 
     public void addSubjectAndMark(String subj,int m)
     {
@@ -242,4 +245,13 @@ public class Student implements Pupil, Serializable
         return student;
     }
 
+    @Override
+    public Student createInstance(Type type) {
+        Student student = new Student(this.name,this.marks.length);
+        student.command = new CommandWriterColumn();
+        for (int i=0;i<marks.length;i++){
+            student.addSubjectAndMark(subjects[i],marks[i]);
+        }
+        return student;
+    }
 }
