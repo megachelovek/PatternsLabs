@@ -1,6 +1,6 @@
 # Patterns Laboratory work
 
-Pattern laboratory work at the university. Implemented patterns like:
+Pattern laboratory work at the university. Implemented patterns like: 
   - Adapter
   - Chain responsibility
   - Command
